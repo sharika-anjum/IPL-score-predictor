@@ -1,0 +1,109 @@
+<style>
+    body {
+        background: url('https://wallpapercave.com/wp/wp4059913.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <title>IPL score prediction</title>
+</head>
+<body>
+
+  
+  <div class="container mt-5" style="position: relative;
+  opacity:0.8;
+  background-color: black;
+  padding: 35px;">
+      <H1 class="text-center" style="color:pink"><strong><marquee behavior="alternate">Now predicting score is just one click away</marquee></strong></H1><br>
+
+      <div class = "col-md-offset-2">
+                <h5 class = "text-center text-warning"><b>Fill the details below...</b></h5>
+
+                <form accept-charset="utf-8" name="Modelform" method="POST" action ='/predict'>
+                    <label class = "text-light "><b>  Select the venue:</b> </label><br>
+                    <select class="selectpicker form-control" id="Venue" name="Venue" required="1">
+                            {% for venue in venue_list %}
+                            <option value="{{ venue }}">{{ venue }}</option>
+                            {% endfor %}
+                    </select><br>
+
+                    <label class = "text-light"><b> Select the batting team name:</b> </label><br>
+                    <select class="selectpicker form-control" id="batting_team" name="batting_team" required="1">
+                        {% for bat in team_list %}
+                            <option value="{{ bat }}">{{ bat }}</option>
+                            {% endfor %}
+                    </select><br>
+
+                    <label class = "text-light"><b> Select the bowling team name:</b> </label><br>
+                    <select class="selectpicker form-control" id="bowling_team" name="bowling_team" required="1">
+                        {% for ball in team_list %}
+                            <option value="{{ bat }}">{{ ball }}</option>
+                            {% endfor %}
+                    </select><br>
+
+                    <label class="fas fa-road text-light"><b> Runs now:</b> </label><br>
+                        <input type="number" class="form-control" id="runs" name="runs"
+                               placeholder="Enter the present run"> <br>
+
+                    <label class="fas fa-road text-light"><b> Wickets now:</b> </label><br>
+                        <input type="number" class="form-control" id="wickets" name="wickets"
+                               placeholder="Enter the present wicket"> <br>
+
+                    <label class="fas fa-road text-light"><b> Overs now:</b> </label><br>
+                        <input type="number" class="form-control" id="overs" name="overs"
+                               placeholder="Enter the present over "> <br>
+
+                    <label class="fas fa-road text-light"><b> Runs last 5 overs:</b> </label><br>
+                        <input type="number" class="form-control" id="runsl" name="runsl"
+                               placeholder="Enter the runs made in last 5 overs "> <br>
+
+                    <label class="fas fa-road text-light"><b> Wickets last 5 overs:</b> </label><br>
+                        <input type="number" class="form-control" id="wicketsl" name="wicketsl"
+                               placeholder="Enter the wickets gone in the last 5 overs"> <br>
+
+                    <button  class="btn btn-info form-control" type = "submit">Predict Price</button><br> <br>
+                    {% if score %}
+                        <h4 class="text-center text-light">Predicted score : ₹ {{score}} </h4>
+                    {% else %}
+                        <h5 class="text-center text-light">Can't work with these details..Please provide valid details</h5>
+                    {% endif %}
+
+
+            </div>
+
+      <div class="row">
+
+
+      <a href="\" class="btn btn-success btn-small col-md-3" style="margin-right:200px;margin-left:70px"><strong> RESET</strong></a>
+
+      <a href="\aboutus" class="btn btn-warning btn-small col-md-3" style="margin-left:170px"><strong>ABOUT US</strong></a><br><br>
+    </div>
+
+      <footer>
+        <p class = "text-center text-light" style = "padding:10px">Copyright &copy; 2020, Sharika Anjum Mondal</p>
+      </footer>
+
+  </div>
+
+</body>
+</html>
